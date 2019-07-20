@@ -8,7 +8,7 @@ import './login.scss';
 class Login extends React.Component {
   constructor() {
     super();
-    this.state = { username: 'Luke Skywalker', password: '19BBY' };
+    this.state = { username: '', password: '' };
   }
 
   /**
@@ -44,7 +44,6 @@ class Login extends React.Component {
                 required
                 className="form-control"
                 disabled={loader}
-                defaultValue="Luke Skywalker"
                 onChange={e => {
                   this.handleChange('username', e.target.value);
                 }}
@@ -57,7 +56,6 @@ class Login extends React.Component {
                 required
                 className="form-control"
                 disabled={loader}
-                defaultValue="19BBY"
                 onChange={e => {
                   this.handleChange('password', e.target.value);
                 }}
