@@ -1,14 +1,14 @@
 How to install dependency
-### `npm install`
+### `yarn install` or `yarn`
 
 How to start this project
-### `npm start`
+### `npm start` or `yarn start`
 
 How to start this project
-### `npm test`
+### `npm test` or `yarn test`
 
 build for production build
-### `npm run build`
+### `npm run build` or `yarn run build`
 
 Library used:
 1. `Bootstras`
