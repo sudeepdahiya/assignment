@@ -1,0 +1,16 @@
+.login {
+  width: 500px;
+  background-color: #eee;
+  border: 1px solid #ccc;
+  margin-top: 50vh;
+  transform: translateY(-50%);
+  border-top: 5px solid red;
+  .error {
+    margin-top: 10px;
+  }
+  .formContainer {
+    .row {
+      margin: 10px;
+    }
+  }
+}
