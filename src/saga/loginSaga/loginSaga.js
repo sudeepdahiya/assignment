@@ -19,6 +19,7 @@ function* getLoginDetail(action) {
       results[0].birth_year === password
     ) {
       yield put(loginAction.setLogin({ login: true, username: username }));
+      yield put(loginAction.setError(''));
     } else {
       yield put(loginAction.setError('Wrong Username and password'));
     }
