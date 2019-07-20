@@ -7,16 +7,14 @@ import Header from '../component/header/Header';
 const HomeLazy = lazy(() => import('../container/HomeModule'));
 const LoginLazy = lazy(() => import('../container/LoginContainer'));
 
-const FallBackLoader = () => <div>Loading...</div>;
-
 const HomeSuspense = () => (
-  <Suspense fallback={FallBackLoader}>
+  <Suspense fallback={<div>Loading...</div>}>
     <HomeLazy />
   </Suspense>
 );
 
 const LoginSuspense = () => (
-  <Suspense fallback={FallBackLoader}>
+  <Suspense fallback={<div>Loading...</div>}>
     <LoginLazy />
   </Suspense>
 );

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import Search from './search/Search';
 import Detail from './detail/Detail';
@@ -74,5 +75,21 @@ class Home extends React.Component {
     );
   }
 }
+
+Home.defaultProps = {
+  error: '',
+  searchList: []
+};
+
+Home.propTypes = {
+  searchList: PropTypes.array.isRequired,
+  getSearchList: PropTypes.func,
+  loader: PropTypes.bool.isRequired,
+  setSelectedItem: PropTypes.func.isRequired,
+  selectedItem: PropTypes.object.isRequired,
+  error: PropTypes.string,
+  searchCounter: PropTypes.array.isRequired,
+  username: PropTypes.string.isRequired
+};
 
 export default Home;

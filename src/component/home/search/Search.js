@@ -85,7 +85,7 @@ Search.defaultProps = {
 };
 
 Search.propTypes = {
-  list: PropTypes.shape({}),
+  list: PropTypes.array,
   loader: PropTypes.bool,
   onSelect: PropTypes.func.isRequired,
   disabled: PropTypes.bool.isRequired
