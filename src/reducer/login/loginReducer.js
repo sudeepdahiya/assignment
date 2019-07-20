@@ -5,7 +5,7 @@ import {
 } from './../../action/login/loginAction';
 
 const initialState = {
-  login: true,
+  login: false,
   username: '',
   error: '',
   loader: false
