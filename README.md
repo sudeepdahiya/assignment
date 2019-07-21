@@ -1,6 +1,6 @@
 How to install dependency
 
-### `yarn install` or `yarn`
+### `npm install` or `yarn`
 
 How to start this project
 
@@ -20,8 +20,11 @@ Library used:
 2. `Redux`
 3. `Sagas`
 4. `Redux Dynamic Modules` and `Redux Dynamic Modules Saga` (for code spliting in Redux and sagas)
+5. `jest`
+6. `React.lazy`
+7. `scss`
 
 ### `constant/constant.js`
 
-`USER_SEARCH_PERMISSION` : username who can search more than limit
+`USER_SEARCH_PERMISSION` : username list who can search more than limit
 `LIMIT_PER_MIN` : max number of search per min
