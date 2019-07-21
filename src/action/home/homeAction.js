@@ -8,9 +8,9 @@ const getSearchList = name => ({
   payload: { name }
 });
 
-const setSearchList = list => ({
+const setSearchList = ({ list, date }) => ({
   type: SET_SEARCH_LIST,
-  payload: { list }
+  payload: { list, date }
 });
 
 const setSelectedItem = item => ({

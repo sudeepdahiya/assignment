@@ -23,7 +23,7 @@ function homeReducer(state = initialState, action) {
         // dont add older serach
         const timeDiff = getMinutesBetweenDates(
           state.searchCounter[i],
-          new Date()
+          action.payload.date
         );
         if (timeDiff < 1) {
           searchCounter.push(state.searchCounter[i]);
@@ -33,7 +33,7 @@ function homeReducer(state = initialState, action) {
         ...state,
         searchList: action.payload.list,
         loader: false,
-        searchCounter: [...searchCounter, new Date()]
+        searchCounter: [...searchCounter, action.payload.date]
       };
     case GET_SEARCH_LIST:
       return {

@@ -12,7 +12,7 @@ function* getLoginDetail(action) {
     const response = yield call(fetch, url);
 
     const { results } = yield call([response, response.json]);
-    yield put(homeAction.setSearchList(results));
+    yield put(homeAction.setSearchList({ list: results, date: new Date() }));
   } catch (e) {
     yield put(homeAction.setError('Internal Server error'));
   }
