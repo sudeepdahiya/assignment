@@ -1,25 +1,23 @@
-import { call, put, takeLatest } from 'redux-saga/effects';
+import { put, takeLatest } from 'redux-saga/effects';
 
 import homeAction from './../../action/home/homeAction';
 import { GET_SEARCH_LIST } from './../../action/home/homeAction';
 
 import { PLANET_URL } from './../../constant/constant';
 
-function* getLoginDetail(action) {
+export function* getSearchList(action) {
   const { name } = action.payload;
   const url = `${PLANET_URL}?search=${name}`;
   try {
-    const response = yield call(fetch, url);
-
-    const { results } = yield call([response, response.json]);
+    const { results } = yield fetch(url).then(response => response.json());
     yield put(homeAction.setSearchList({ list: results, date: new Date() }));
   } catch (e) {
-    yield put(homeAction.setError('Internal Server error'));
+    yield put(homeAction.setError('Internal server error'));
   }
 }
 
-function* watchLoginSaga() {
-  yield takeLatest(GET_SEARCH_LIST, getLoginDetail);
+function* watchHomeSaga() {
+  yield takeLatest(GET_SEARCH_LIST, getSearchList);
 }
 
-export default watchLoginSaga;
+export default watchHomeSaga;

@@ -1,18 +1,18 @@
-import { call, put, takeLatest } from 'redux-saga/effects';
+import { put, takeLatest } from 'redux-saga/effects';
 
-import loginAction from './../../action/login/loginAction';
-import { GET_LOGIN_DETAIL } from './../../action/login/loginAction';
+import loginAction, {
+  GET_LOGIN_DETAIL
+} from './../../action/login/loginAction';
 
 import { PEOPLE_URL } from './../../constant/constant';
 
-function* getLoginDetail(action) {
+export function* getLoginDetail(action) {
   const { username, password } = action.payload;
   yield put(loginAction.setLoader(true));
   const url = `${PEOPLE_URL}?search=${username}`;
   try {
-    const response = yield call(fetch, url);
-
-    const { results } = yield call([response, response.json]);
+    const response = yield fetch(url).then(response => response.json());
+    const { results } = response;
     if (
       results.length === 1 &&
       results[0].name === username &&
@@ -24,7 +24,7 @@ function* getLoginDetail(action) {
       yield put(loginAction.setError('Wrong Username and password'));
     }
   } catch (e) {
-    yield put(loginAction.setError('Internal Server error'));
+    yield put(loginAction.setError('Internal server error'));
   }
   yield put(loginAction.setLoader(false));
 }
