@@ -28,3 +28,7 @@ Library used:
 
 `USER_SEARCH_PERMISSION` : username list who can search more than limit
 `LIMIT_PER_MIN` : max number of search per min
+
+### `project hosted on heroku`
+
+link: https://assigment-test.herokuapp.com/
