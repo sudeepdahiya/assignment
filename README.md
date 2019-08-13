@@ -23,6 +23,7 @@ Library used:
 5. `jest`
 6. `React.lazy`
 7. `scss`
+8. `hooks`
 
 ### `constant/constant.js`
 
