@@ -1,80 +1,76 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import Error from './../error/Error';
 
+import loginAction from './../../action/login/loginAction';
+
 import './login.scss';
 
-class Login extends React.Component {
-  constructor() {
-    super();
-    this.state = { username: '', password: '' };
-  }
-
-  /**
-   * @description Change username and password
-   */
-  handleChange = (name, value) => {
-    this.setState({ [name]: value });
-  };
+const Login = props => {
+  const dispatch = useDispatch();
+  const [username, setUsername] = useState('Luke Skywalker');
+  const [password, setPassword] = useState('19BBY');
 
   /**
    * @description call login detail sagas for auth
    */
-  onSubmit = e => {
+  const onSubmit = e => {
     e.preventDefault();
-    const { getLoginDetail } = this.props;
-    getLoginDetail(this.state);
+    dispatch(loginAction.getLoginDetail({ username, password }));
   };
 
-  render() {
-    const { loader, error } = this.props;
-    return (
-      <div className="container login">
-        <div className="formContainer">
-          {error && <Error error={error} />}
-          <form ref={this.form} onSubmit={this.onSubmit}>
-            <div className="row">
-              <h2>Login Form</h2>
-            </div>
-            <div className="row">
-              <input
-                type="text"
-                placeholder="Username"
-                required
-                className="form-control"
-                disabled={loader}
-                onChange={e => {
-                  this.handleChange('username', e.target.value);
-                }}
-              />
-            </div>
-            <div className="row">
-              <input
-                type="password"
-                placeholder="Password"
-                required
-                className="form-control"
-                disabled={loader}
-                onChange={e => {
-                  this.handleChange('password', e.target.value);
-                }}
-              />
-            </div>
-            <div className="row">
-              <input
-                type="submit"
-                value={loader ? 'loading...' : 'Login'}
-                className="btn btn-primary"
-                disabled={loader}
-              />
-            </div>
-          </form>
-        </div>
+  const { loader, error } = props;
+  return (
+    <div className="container login">
+      <div className="formContainer">
+        {error && <Error error={error} />}
+        <form onSubmit={onSubmit}>
+          <div className="row">
+            <h2>Login Form</h2>
+          </div>
+          <div className="row">
+            <input
+              type="text"
+              placeholder="Username"
+              required
+              className="form-control"
+              disabled={loader}
+              defaultValue={username}
+              value={username}
+              onChange={e => {
+                setUsername(e.target.value);
+              }}
+            />
+          </div>
+          <div className="row">
+            <input
+              type="password"
+              placeholder="Password"
+              required
+              className="form-control"
+              disabled={loader}
+              defaultValue={password}
+              value={password}
+              onChange={e => {
+                setPassword(e.target.value);
+              }}
+            />
+          </div>
+          <div className="row">
+            <input
+              type="submit"
+              value={loader ? 'loading...' : 'Login'}
+              className="btn btn-primary"
+              disabled={loader}
+            />
+          </div>
+        </form>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 Login.defaultProps = {
   loader: false
